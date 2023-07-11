@@ -41,6 +41,13 @@
         header-align="center"
         label="品牌logo地址"
         prop="logo">
+        <template slot-scope="scope">
+          <!-- <el-image
+              style="width: 100px; height: 80px"
+              :src="scope.row.logo"
+          fit="fill"></el-image>-->
+          <img :src="scope.row.logo" style="width: 100px; height: 80px"/>
+        </template>
       </el-table-column>
       <el-table-column
         align="center"
@@ -54,13 +61,13 @@
         label="显示状态"
         prop="showStatus">
         <template slot-scope="scope">
-<!--          <i class="el-icon-time"></i>-->
+          <!--          <i class="el-icon-time"></i>-->
           <el-switch
             v-model="scope.row.showStatus"
-            active-color="#13ce66"
-            inactive-color="#ff4949"
             :active-value="1"
             :inactive-value="0"
+            active-color="#13ce66"
+            inactive-color="#ff4949"
             @change="updateBrandStatus(scope.row)"
           ></el-switch>
         </template>
@@ -129,16 +136,16 @@ export default {
     this.getDataList()
   },
   methods: {
-    updateBrandStatus(data){
+    updateBrandStatus(data) {
       console.log("最新信息", data);
-      let { brandId, showStatus } = data;
+      let {brandId, showStatus} = data;
       //发送请求修改状态
       this.$http({
         // url: this.$http.adornUrl("/product/brand/update/status"),
-        url: this.$http.adornUrl("/product/brand/update"),
+        url: this.$http.adornUrl("/product/brand/update/status"),
         method: "post",
-        data: this.$http.adornData({ brandId, showStatus }, false)
-      }).then(({ data }) => {
+        data: this.$http.adornData({brandId, showStatus}, false)
+      }).then(({data}) => {
         this.$message({
           type: "success",
           message: "状态更新成功"
