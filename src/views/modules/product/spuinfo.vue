@@ -16,9 +16,9 @@
       <el-table-column prop="weight" header-align="center" align="center" label="重量"></el-table-column>
       <el-table-column prop="publishStatus" header-align="center" align="center" label="上架状态">
         <template slot-scope="scope">
-          <el-tag v-if="scope.row.publishStatus == 0">新建</el-tag>
-          <el-tag v-if="scope.row.publishStatus == 1">已上架</el-tag>
-          <el-tag v-if="scope.row.publishStatus == 2">已下架</el-tag>
+          <el-tag v-if="scope.row.publishStatus === 0">新建</el-tag>
+          <el-tag v-if="scope.row.publishStatus === 1">已上架</el-tag>
+          <el-tag v-if="scope.row.publishStatus === 2">已下架</el-tag>
         </template>
       </el-table-column>
       <el-table-column prop="createTime" header-align="center" align="center" label="创建时间"></el-table-column>
